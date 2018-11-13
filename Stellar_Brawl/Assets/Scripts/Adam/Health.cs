@@ -19,7 +19,7 @@ public class Health : MonoBehaviour // Adam Brodin SU17A \\
         rb2d_2 = GetComponent<Rigidbody2D>();
         if (gameObject.tag == "player")
         {
-            hp = 5; // The player's start hp
+            hp = 10; // The player's start hp
         }
     }
 
@@ -37,7 +37,7 @@ public class Health : MonoBehaviour // Adam Brodin SU17A \\
                 if (!isDead)
                 {
                     isDead = true;
-                    gameOver();
+                    GameOver();
                 }
             }
             else // If this gameObject isn't a player, aka is an enemy
@@ -53,7 +53,7 @@ public class Health : MonoBehaviour // Adam Brodin SU17A \\
         }
     }
 
-    void gameOver()
+    void GameOver()
     {
         gameoverUI.SetActive(true); // Toggles the gameover ui
         Time.timeScale = 0f; // Freezes the game by setting the time to 0

@@ -12,7 +12,6 @@ public class BeamMovement : MonoBehaviour //Bogdan C. SU17A\\
 
     public int scoreValue;
     private GameController gameController;
-    private float blinkLength = 0.5f;
 
     void Start()
     {
@@ -33,18 +32,9 @@ public class BeamMovement : MonoBehaviour //Bogdan C. SU17A\\
     {
         if (other.tag == "basic" || other.tag == "strong" || other.tag == "tank" || other.tag == "shooting" || other.tag == "dodging" || other.tag == "dodgingshooting")
         {
-            StartCoroutine(blinkRed(other.gameObject));
             gameController.AddScore(scoreValue);
             Destroy(gameObject);
         }
-    }
-
-    private IEnumerator blinkRed(GameObject o)
-    {
-        SpriteRenderer spr = o.GetComponent<SpriteRenderer>();
-        spr.color = Color.red;
-        yield return new WaitForSeconds(blinkLength);
-        spr.color = Color.white;
     }
 
 }

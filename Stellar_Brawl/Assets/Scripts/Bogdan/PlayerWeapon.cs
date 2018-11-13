@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour //Bogdan C. SU17A\\
 {
-    public Transform firepointTop;
-    public Transform firepointDown;
+    public Transform firepointTop, firepointDown;
     public GameObject beamPrefab;
-    bool canShoot = true;
-	
-	void Update ()
+    private float cooldown = 0.2f;
+    private bool canShoot = true;
+
+    void Update()
     {
-		if (Input.GetButton("Jump") && canShoot)
+        if (Input.GetButton("Jump") && canShoot)
         {
             canShoot = false;
             StartCoroutine(Shoot());
         }
-	}
+    }
 
     // Spawns BeamPrefabs wich as bullets
     private IEnumerator Shoot()
     {
         Instantiate(beamPrefab, firepointTop.position, firepointTop.rotation);
         Instantiate(beamPrefab, firepointDown.position, firepointDown.rotation);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(cooldown);
         canShoot = true;
-        //  Debug.Log("SHOOT!");
     }
 
 

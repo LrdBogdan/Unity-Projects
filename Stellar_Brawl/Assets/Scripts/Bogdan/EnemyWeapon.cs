@@ -17,7 +17,7 @@ public class EnemyWeapon : MonoBehaviour //Bogdan C. SU17A\\
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f); // Delay between shots
+            yield return new WaitForSeconds(Random.Range(0.75f, 2f)); // Delay between shots
             Shoot();
         }
     }
